@@ -1,20 +1,24 @@
 import express from "express";
-import { ENV } from "./config/env.js";
-import { pool } from "./config/db.js";
-import { initBot } from "./bot/bot.js";
-import router from "./routes/index.js";
+import { ENV } from "./src/config/env.js";
+import { pool } from "./src/config/db.js";
+import { initBot } from "./src/bot/bot.js";
+import router from "./src/routes/index.js";
 import cors from "cors";
 
 const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "http://soatly.uz",
     credentials: true,
   }),
 );
 
 app.use("/api", router);
+
+app.get("/health", (req, res) => {
+  res.json({ message: "Server is running" });
+});
 
 const startServer = async () => {
   try {

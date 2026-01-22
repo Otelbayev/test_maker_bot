@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { User, UserCheck, BookOpen, Monitor } from "lucide-react";
+import { User, UserCheck } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 
@@ -42,14 +42,12 @@ export default function HomePage() {
       <div className="flex flex-col md:flex-row gap-6">
         <RoleButton
           icon={<UserCheck size={24} />}
-          subIcon={<BookOpen size={20} />}
           label="O'qituvchi sifatida kirish"
           onClick={() => handleLogin("teacher")}
           variants={buttonVariants}
         />
         <RoleButton
           icon={<User size={24} />}
-          subIcon={<Monitor size={20} />}
           label="O'quvchi sifatida kirish"
           onClick={() => handleLogin("student")}
           variants={buttonVariants}
