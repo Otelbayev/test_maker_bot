@@ -1,17 +1,15 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { Home, Users, User2, LogOut, Sun, Moon } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useMode } from "../context/ModeContext";
 
 const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { authData, logout } = useAuth();
-
-  const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem("theme") !== "light";
-  });
+  const { isDark, setIsDark } = useMode();
 
   useEffect(() => {
     if (isDark) {
@@ -91,7 +89,7 @@ const Layout = () => {
 
       {/* --- MAIN CONTENT --- */}
       <main className="flex-1 pb-28 p-2 max-w-2xl mx-auto w-full">
-        <Outlet context={{ isDark }} />
+        <Outlet />
       </main>
 
       {/* --- BOTTOM NAVIGATION --- */}

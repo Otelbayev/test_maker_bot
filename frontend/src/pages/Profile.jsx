@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { User, Users, GraduationCap, Briefcase, Save } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import api from "../services/axios";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useMode } from "../context/ModeContext";
 
 const Profile = () => {
   const { authData, updateAuthData } = useAuth();
-  const { isDark } = useOutletContext();
+  const { isDark } = useMode();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

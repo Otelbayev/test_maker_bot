@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Users, UserPlus, Plus } from "lucide-react";
-import { useOutletContext } from "react-router-dom";
 import AddStudentModal from "../components/AddStudentModal";
+import { useMode } from "../context/ModeContext";
 
 const Students = () => {
-  const { isDark } = useOutletContext();
+  const { isDark } = useMode();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [students, setStudents] = useState([]);
 

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ClipboardList, CheckCircle2, Send, Plus } from "lucide-react";
-import { useOutletContext } from "react-router-dom";
 import EnterTestModal from "../components/EnterTestModal";
+import { useMode } from "../context/ModeContext";
 
 const StudentDashboard = () => {
-  const { isDark } = useOutletContext();
+  const { isDark } = useMode();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Rang mantiqlari
