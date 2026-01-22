@@ -47,16 +47,37 @@ class UserController {
   }
 
   static async getMe(req, res) {
-    const userData = req.user;
-    return res.status(200).json({
-      user: {
-        chatId: Number(userData.chatId),
-        role: userData.role,
-        firstName: userData.firstName || "",
-        lastName: userData.lastName || "",
-        username: userData.username || "",
-      },
-    });
+    try {
+      const { chatId } = req.user; // token ichidan
+
+      const result = await pool.query(
+        `
+      SELECT chat_id, role, first_name, last_name, username
+      FROM users
+      WHERE chat_id = $1
+      `,
+        [chatId],
+      );
+
+      if (result.rows.length === 0) {
+        return res.status(404).json({ message: "User topilmadi" });
+      }
+
+      const user = result.rows[0];
+
+      return res.status(200).json({
+        user: {
+          chatId: Number(user.chat_id),
+          role: user.role,
+          firstName: user.first_name || "",
+          lastName: user.last_name || "",
+          username: user.username || "",
+        },
+      });
+    } catch (error) {
+      console.error("getMe error:", error);
+      return res.status(500).json({ message: "Server xatosi" });
+    }
   }
 }
 

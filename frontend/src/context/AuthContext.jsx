@@ -19,6 +19,10 @@ export const AuthProvider = ({ children }) => {
   });
   const [loading, setLoading] = useState(true);
 
+  const updateAuthData = (key, value) => {
+    setAuthData((prev) => ({ ...prev, [key]: value }));
+  };
+
   useEffect(() => {
     const tg = window.Telegram?.WebApp;
     if (tg?.initDataUnsafe?.user) {
@@ -79,7 +83,9 @@ export const AuthProvider = ({ children }) => {
   }, [getData]);
 
   return (
-    <AuthContext.Provider value={{ authData, login, loading, logout }}>
+    <AuthContext.Provider
+      value={{ authData, login, loading, logout, updateAuthData }}
+    >
       {children}
     </AuthContext.Provider>
   );
