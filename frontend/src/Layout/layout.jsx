@@ -90,46 +90,48 @@ const Layout = () => {
       </motion.header>
 
       {/* --- MAIN CONTENT --- */}
-      <main className="flex-1 pb-28 p-4 max-w-2xl mx-auto w-full">
+      <main className="flex-1 pb-28 p-2 max-w-2xl mx-auto w-full">
         <Outlet context={{ isDark }} />
       </main>
 
       {/* --- BOTTOM NAVIGATION --- */}
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50">
-        <div
-          className={`backdrop-blur-2xl border rounded-[2.5rem] p-2 shadow-2xl flex justify-around items-center transition-all ${
-            isDark
-              ? "bg-[#1e293b]/90 border-white/10"
-              : "bg-white/90 border-gray-200 shadow-gray-200"
-          }`}
-        >
-          <NavItem
-            icon={<Home size={22} />}
-            label="Home"
-            active={isActive("/teacher") || isActive("/student")}
-            onClick={() =>
-              navigate(authData.role === "teacher" ? "/teacher" : "/student")
-            }
-            isDark={isDark}
-          />
-          {authData.role === "teacher" && (
+      {location.pathname !== "/profile" && (
+        <nav className="fixed bottom-2 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50">
+          <div
+            className={`backdrop-blur-2xl border rounded-[2.5rem] p-1 shadow-2xl flex justify-around items-center transition-all ${
+              isDark
+                ? "bg-[#1e293b]/90 border-white/10"
+                : "bg-white/90 border-gray-200 shadow-gray-200"
+            }`}
+          >
             <NavItem
-              icon={<Users size={22} />}
-              label="Students"
-              active={isActive("/students")}
-              onClick={() => navigate("/students")}
+              icon={<Home size={22} />}
+              label="Home"
+              active={isActive("/teacher") || isActive("/student")}
+              onClick={() =>
+                navigate(authData.role === "teacher" ? "/teacher" : "/student")
+              }
               isDark={isDark}
             />
-          )}
-          <NavItem
-            icon={<User2 size={22} />}
-            label="Profile"
-            active={isActive("/profile")}
-            onClick={() => navigate("/profile")}
-            isDark={isDark}
-          />
-        </div>
-      </nav>
+            {authData.role === "teacher" && (
+              <NavItem
+                icon={<Users size={22} />}
+                label="Students"
+                active={isActive("/students")}
+                onClick={() => navigate("/students")}
+                isDark={isDark}
+              />
+            )}
+            <NavItem
+              icon={<User2 size={22} />}
+              label="Profile"
+              active={isActive("/profile")}
+              onClick={() => navigate("/profile")}
+              isDark={isDark}
+            />
+          </div>
+        </nav>
+      )}
     </div>
   );
 };

@@ -19,7 +19,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.put("/auth/update", { ...authData });
+      // await api.put("/auth/update", { ...authData });
       navigate(`/${authData.role}`);
     } catch (error) {
       console.error("Xatolik:", error);
@@ -27,14 +27,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex items-center justify-center p-4 relative min-h-[80vh]">
+    <div className="flex items-center justify-center relative min-h-[80vh]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="z-10 w-full max-w-md"
       >
         {/* Orqaga qaytish tugmasi */}
-        <button
+        {/* <button
           onClick={() => navigate(-1)}
           className={`
     flex items-center gap-1 mb-6 transition-all duration-300 font-medium group
@@ -50,7 +50,7 @@ const Profile = () => {
             className="group-hover:-translate-x-1 transition-transform"
           />
           <span>Orqaga</span>
-        </button>
+        </button> */}
 
         <form
           onSubmit={handleSubmit}
