@@ -11,7 +11,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({
-    chatId: null,
+    chatId: 9879879879,
     firstName: "",
     lastName: "",
     username: "",
@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (role) => {
     try {
-      // Role bilan birga oxirgi authData ni yuboramiz
       const payload = { ...authData, role };
       const res = await api.post("/auth/login", payload);
 
