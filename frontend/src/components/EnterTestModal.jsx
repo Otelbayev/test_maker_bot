@@ -21,9 +21,9 @@ const EnterTestModal = ({ isOpen, onClose, isDark }) => {
           />
 
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 30 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
             className={`relative w-full max-w-sm rounded-[3rem] p-10 border transition-all duration-500 ${modalBg}`}
           >
             {/* Yopish tugmasi */}

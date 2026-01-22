@@ -27,9 +27,9 @@ const AddStudentModal = ({ isOpen, onClose, isDark }) => {
           />
 
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
             className={`relative w-full max-w-sm rounded-[2.5rem] p-8 shadow-2xl border transition-all duration-500 ${modalBg}`}
           >
             <div className="flex justify-between items-center mb-6">
