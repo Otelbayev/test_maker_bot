@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { X, KeyRound, Sparkles } from "lucide-react";
 
 const EnterTestModal = ({ isOpen, onClose, isDark }) => {
@@ -9,7 +9,7 @@ const EnterTestModal = ({ isOpen, onClose, isDark }) => {
   const subTextColor = isDark ? "text-gray-400" : "text-gray-500";
 
   return (
-    <AnimatePresence>
+    <div>
       {isOpen && (
         <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
           <motion.div
@@ -89,7 +89,7 @@ const EnterTestModal = ({ isOpen, onClose, isDark }) => {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { X, Info } from "lucide-react";
 
 const AddStudentModal = ({ isOpen, onClose, isDark }) => {
@@ -15,7 +15,7 @@ const AddStudentModal = ({ isOpen, onClose, isDark }) => {
     : "text-gray-400 hover:text-gray-600";
 
   return (
-    <AnimatePresence>
+    <div>
       {isOpen && (
         <div className="fixed inset-0 z-60 flex items-center justify-center p-4">
           <motion.div
@@ -85,7 +85,7 @@ const AddStudentModal = ({ isOpen, onClose, isDark }) => {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </div>
   );
 };
 
