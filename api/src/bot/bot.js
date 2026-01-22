@@ -1,5 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
-import { ENV } from "../config/env";
+import { ENV } from "../config/env.js";
 
 if (!ENV.BOT_TOKEN) {
   throw new Error("BOT_TOKEN is not defined");
@@ -22,7 +22,7 @@ export const initBot = () => {
               {
                 text: "🔐 Tizimga kirish",
                 web_app: {
-                  url: ENV.WEB_APP_URL!,
+                  url: ENV.WEB_APP_URL,
                 },
               },
             ],
