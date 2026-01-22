@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const payload = { ...authData, role };
       const res = await api.post("/auth/login", payload);
-
       setAuthData(res.data.user);
       localStorage.setItem("token", res.data.token);
       return res.data;
