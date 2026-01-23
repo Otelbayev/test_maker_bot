@@ -104,7 +104,7 @@ const Layout = () => {
               }`}
             >
               <NavItem
-                icon={<Home size={22} />}
+                icon={<Home size={15} />}
                 label="Asosiy"
                 active={isActive("/teacher") || isActive("/student")}
                 onClick={() =>
@@ -116,7 +116,7 @@ const Layout = () => {
               />
               {authData.role === "teacher" && (
                 <NavItem
-                  icon={<FileText size={22} />}
+                  icon={<FileText size={15} />}
                   label="Testlar"
                   active={isActive("/tests")}
                   onClick={() => navigate("/tests")}
@@ -125,7 +125,7 @@ const Layout = () => {
               )}
               {authData.role === "teacher" && (
                 <NavItem
-                  icon={<Users size={22} />}
+                  icon={<Users size={15} />}
                   label="O'quvchilar"
                   active={isActive("/students")}
                   onClick={() => navigate("/students")}
@@ -133,7 +133,7 @@ const Layout = () => {
                 />
               )}
               <NavItem
-                icon={<User2 size={22} />}
+                icon={<User2 size={15} />}
                 label="Profil"
                 active={isActive("/profile")}
                 onClick={() => navigate("/profile")}
