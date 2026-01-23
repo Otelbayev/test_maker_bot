@@ -87,19 +87,19 @@ const Profile = () => {
               >
                 Siz kimsiz?
               </label>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-1">
                 <RoleOption
                   active={authData.role === "student"}
                   onClick={() => updateAuthData("role", "student")}
                   icon={<GraduationCap size={18} />}
-                  label="O'quvchi"
+                  label="Test topshiruvchi"
                   isDark={isDark}
                 />
                 <RoleOption
                   active={authData.role === "teacher"}
                   onClick={() => updateAuthData("role", "teacher")}
                   icon={<Briefcase size={18} />}
-                  label="O'qituvchi"
+                  label="Test yaratuvchi"
                   isDark={isDark}
                 />
               </div>

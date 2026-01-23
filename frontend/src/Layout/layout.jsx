@@ -1,5 +1,5 @@
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { Home, Users, User2, LogOut, Sun, Moon } from "lucide-react";
+import { Home, Users, User2, LogOut, Sun, Moon, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
@@ -45,10 +45,10 @@ const Layout = () => {
           </div>
           <div className="flex flex-col">
             <span className="text-sm font-bold leading-none">
-              {authData.firstName || "User"}
+              {authData.username || "User"}
             </span>
             <span
-              className={`text-[10px] mt-1 uppercase tracking-tighter px-1.5 py-0.5 rounded ${
+              className={`text-[10px] mt-1 w-fit uppercase tracking-tighter px-1.5 py-0.5 rounded ${
                 isDark
                   ? "bg-white/5 text-gray-400"
                   : "bg-gray-100 text-gray-500"
@@ -93,43 +93,55 @@ const Layout = () => {
       </main>
 
       {/* --- BOTTOM NAVIGATION --- */}
-      {location.pathname !== "/profile" && (
-        <nav className="fixed bottom-2 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50">
-          <div
-            className={`backdrop-blur-2xl border rounded-[2.5rem] p-1 shadow-2xl flex justify-around items-center transition-all ${
-              isDark
-                ? "bg-[#1e293b]/90 border-white/10"
-                : "bg-white/90 border-gray-200 shadow-gray-200"
-            }`}
-          >
-            <NavItem
-              icon={<Home size={22} />}
-              label="Home"
-              active={isActive("/teacher") || isActive("/student")}
-              onClick={() =>
-                navigate(authData.role === "teacher" ? "/teacher" : "/student")
-              }
-              isDark={isDark}
-            />
-            {authData.role === "teacher" && (
+      {location.pathname !== "/profile" &&
+        location.pathname !== "/createtest" && (
+          <nav className="fixed bottom-2 left-1/2 -translate-x-1/2 w-[92%] max-w-md z-50">
+            <div
+              className={`backdrop-blur-2xl border rounded-[2.5rem] p-1 shadow-2xl flex justify-around items-center transition-all ${
+                isDark
+                  ? "bg-[#1e293b]/90 border-white/10"
+                  : "bg-white/90 border-gray-200 shadow-gray-200"
+              }`}
+            >
               <NavItem
-                icon={<Users size={22} />}
-                label="Students"
-                active={isActive("/students")}
-                onClick={() => navigate("/students")}
+                icon={<Home size={22} />}
+                label="Asosiy"
+                active={isActive("/teacher") || isActive("/student")}
+                onClick={() =>
+                  navigate(
+                    authData.role === "teacher" ? "/teacher" : "/student",
+                  )
+                }
                 isDark={isDark}
               />
-            )}
-            <NavItem
-              icon={<User2 size={22} />}
-              label="Profile"
-              active={isActive("/profile")}
-              onClick={() => navigate("/profile")}
-              isDark={isDark}
-            />
-          </div>
-        </nav>
-      )}
+              {authData.role === "teacher" && (
+                <NavItem
+                  icon={<FileText size={22} />}
+                  label="Testlar"
+                  active={isActive("/tests")}
+                  onClick={() => navigate("/tests")}
+                  isDark={isDark}
+                />
+              )}
+              {authData.role === "teacher" && (
+                <NavItem
+                  icon={<Users size={22} />}
+                  label="O'quvchilar"
+                  active={isActive("/students")}
+                  onClick={() => navigate("/students")}
+                  isDark={isDark}
+                />
+              )}
+              <NavItem
+                icon={<User2 size={22} />}
+                label="Profil"
+                active={isActive("/profile")}
+                onClick={() => navigate("/profile")}
+                isDark={isDark}
+              />
+            </div>
+          </nav>
+        )}
     </div>
   );
 };

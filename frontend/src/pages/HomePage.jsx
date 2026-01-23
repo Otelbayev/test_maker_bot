@@ -55,7 +55,7 @@ export default function HomePage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="z-10 w-full max-w-[340px] sm:max-w-md text-center"
+        className="z-10 w-full max-w-85 sm:max-w-md text-center"
       >
         <h1
           className={`text-4xl md:text-6xl font-black mb-3 tracking-tight ${
