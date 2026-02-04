@@ -31,3 +31,22 @@ CREATE TABLE test_questions (
     correct_answer TEXT, -- ABCDEF variantlar yoki yozma javob matni
     written_answer_count INTEGER DEFAULT 0 -- 36-45 savollar uchun javoblar soni
 );
+
+-- E'lonlar jadvali
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    content TEXT,
+    images TEXT[], -- Rasmlar massivi (URL yoki FileID)
+    status VARCHAR(50) DEFAULT 'pending', -- 'pending', 'sent', 'edited'
+    scheduled_at TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Telegramdagi har bir foydalanuvchiga yuborilgan xabar ID-lari
+CREATE TABLE sent_messages (
+    id SERIAL PRIMARY KEY,
+    post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
+    chat_id BIGINT,
+    message_id INTEGER
+);

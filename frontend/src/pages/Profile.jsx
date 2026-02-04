@@ -13,7 +13,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // await api.put("/auth/update", { ...authData });
+      await api.put("/auth/update", { ...authData });
       navigate(`/${authData.role}`);
     } catch (error) {
       console.error("Xatolik:", error);
@@ -25,7 +25,7 @@ const Profile = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="z-10 w-full max-w-95" // Mobil uchun kenglik cheklandi
+        className="z-10 w-full max-w-95"
       >
         <form
           onSubmit={handleSubmit}
@@ -35,7 +35,6 @@ const Profile = () => {
               : "bg-white border-gray-100 shadow-gray-200/50"
           }`}
         >
-          {/* Sarlavha qismi - Mobilga moslangan */}
           <div className="text-center space-y-1.5">
             <div
               className={`inline-flex p-3 rounded-xl mb-1 transition-colors duration-500 ${
@@ -44,7 +43,7 @@ const Profile = () => {
                   : "bg-blue-50 text-blue-600"
               }`}
             >
-              <Users size={24} /> {/* Icon kichraytirildi */}
+              <Users size={24} />
             </div>
             <h2
               className={`text-xl font-extrabold ${isDark ? "text-white" : "text-gray-800"} `}
@@ -59,7 +58,6 @@ const Profile = () => {
           </div>
 
           <div className="space-y-3.5">
-            {/* Ism Input */}
             <InputField
               label="Ism"
               value={authData.firstName}
@@ -68,7 +66,6 @@ const Profile = () => {
               isDark={isDark}
             />
 
-            {/* Familiya Input */}
             <InputField
               label="Familiya"
               value={authData.lastName}
@@ -77,7 +74,6 @@ const Profile = () => {
               isDark={isDark}
             />
 
-            {/* Rol tanlash */}
             <div className="space-y-2">
               <label
                 className={`
@@ -106,7 +102,6 @@ const Profile = () => {
             </div>
           </div>
 
-          {/* Saqlash tugmasi - Ixchamroq */}
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -121,7 +116,6 @@ const Profile = () => {
   );
 };
 
-/* Yordamchi komponent: Input - Balandligi va paddingi kichraytirildi */
 const InputField = ({ label, value, onChange, placeholder, isDark }) => (
   <div className="group">
     <label
@@ -156,7 +150,6 @@ const InputField = ({ label, value, onChange, placeholder, isDark }) => (
   </div>
 );
 
-/* Yordamchi komponent: Rol tanlash - Padding va text kichraytirildi */
 const RoleOption = ({ active, onClick, icon, label, isDark }) => (
   <button
     type="button"

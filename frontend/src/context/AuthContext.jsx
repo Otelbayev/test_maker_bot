@@ -11,7 +11,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [authData, setAuthData] = useState({
-    chatId: 9879879879,
+    chatId: null,
     firstName: "",
     lastName: "",
     username: "",
@@ -39,22 +39,8 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (role) => {
     try {
-      const res = {
-        data: {
-          message: "Login muvaffaqiyatli",
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NTgsImNoYXRJZCI6Ijk4Nzk4Nzk4NzkiLCJyb2xlIjoidGVhY2hlciIsImlhdCI6MTc2OTExMzE3NCwiZXhwIjoxNzY5NzE3OTc0fQ.AL90DZurq5V8VLGll7NzRx0-vjax6UDnzbJc7AIpO-0",
-          user: {
-            chatId: "9879879879",
-            role: "teacher",
-            firstName: "Jasurbek",
-            lastName: "O'telbayev",
-            username: "",
-          },
-        },
-      };
-      // const payload = { ...authData, role };
-      // const res = await api.post("/auth/login", payload);
+      const payload = { ...authData, role };
+      const res = await api.post("/auth/login", payload);
       setAuthData(res.data.user);
       localStorage.setItem("token", res.data.token);
       return res.data;
@@ -78,18 +64,7 @@ export const AuthProvider = ({ children }) => {
 
   const getData = useCallback(async () => {
     try {
-      const res = {
-        data: {
-          user: {
-            chatId: 9879879879,
-            role: "teacher",
-            firstName: "Jasurbek",
-            lastName: "O'telbayev",
-            username: "",
-          },
-        },
-      };
-      // const res = await api.get("/auth/me");
+      const res = await api.get("/auth/me");
       setAuthData(res.data.user);
     } catch (err) {
       localStorage.removeItem("token");
