@@ -7,6 +7,7 @@ CREATE TABLE users (
     role VARCHAR(10) NOT NULL CHECK (role IN ('admin', 'teacher', 'student')), -- Rol
     created_at TIMESTAMP DEFAULT NOW(), 
     updated_at TIMESTAMP DEFAULT NOW()  
+<<<<<<< HEAD
 );
 
 
@@ -49,4 +50,6 @@ CREATE TABLE sent_messages (
     post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE,
     chat_id BIGINT,
     message_id INTEGER
+=======
+>>>>>>> 09b934d8936a0beb79fb505f46b91094a8887248
 );
